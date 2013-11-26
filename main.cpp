@@ -15,6 +15,9 @@
 using namespace std;
 void function(string);
 void Start_Steam();
+HINSTANCE steam;
+
+
 
 static size_t WriteCallback(void *contents, size_t size, size_t nmemb, void *userp)
 {
@@ -26,6 +29,7 @@ static size_t WriteCallback(void *contents, size_t size, size_t nmemb, void *use
 
 int main(void)
 {
+
 	string line;
 	char* troll;
 	ifstream myfile("profiles.txt");
@@ -76,28 +80,40 @@ void function(string line)
 			if (found != std::string::npos){    //until end of string
 				cout << status[i] << endl;
 
-				if (i == 1)
+				found = contents.find("Join Game");                      //if Join Game is displayed
+				if (i == 1 && found != std::string::npos)
 				{
 
 					cout << "YAYA!" << endl;
 					found = contents.find("steam://connect/");         //finds position of this text
-					cout << found << endl; 
-					ip = contents.substr(found+16, contents.length()-1);        //ip is set to contain text "steam" to end of file
+					cout << found << endl;
+					ip = contents.substr(found, contents.length() - 1);        //ip is set to contain text "steam" to end of file
 					position = ip.find(" ");                                 //sets position to end of IP address
-					ip = contents.substr(found+16, position-1);                    // sets "ip" to whole line
+					ip = contents.substr(found, position);                    // sets "ip" to whole line
 					cout << ip << endl;
+
+					char *path = strdup(ip.c_str());         //convert to LPCSTR
+
+					steam = ShellExecute( // WinExec is obsolete.
+						0,    // hwnd
+						"open",          // operation/verb.
+						path,  // path to steam (external protocol request)
+						"",        // parameters.
+						NULL,            // directory
+						SW_SHOW);       // how to be displayed 
+
 
 					ofstream batch;
 					batch.open("Launch.bat");
 					batch << "@echo\n" << "\"C:\\Program Files (x86)\\Steam\\steam.exe\" -applaunch 440 +connect " << ip << endl;
 					batch.close();
-					system("Launch.bat");
-			}
+				//	system("Launch.bat");
+				}
 
-		}
+			}
 		}
 	}
+
+
 }
-
-
 
