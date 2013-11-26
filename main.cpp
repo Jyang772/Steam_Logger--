@@ -1,3 +1,11 @@
+#include <iostream>
+#include <string>
+#include <fsttream>
+using namespace std;
+
+
+
+
 int main(int argc, char *argv[])
 {
 	string line;
