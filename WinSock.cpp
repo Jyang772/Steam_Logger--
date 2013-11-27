@@ -1,3 +1,16 @@
+/** Research:
+ * Send Function: http://msdn.microsoft.com/en-us/library/windows/desktop/ms740149(v=vs.85).aspx
+ * Recv Function: http://msdn.microsoft.com/en-us/library/windows/desktop/ms740121(v=vs.85).aspx
+ * Sockaddr_in:   http://msdn.microsoft.com/en-us/library/aa917469.aspx
+ * WSAStartup:    http://msdn.microsoft.com/en-us/library/aa921082.aspx
+ * MAKEWORD:      http://msdn.microsoft.com/en-us/library/aa921082.aspx
+**/
+
+
+
+
+
+
 #include "stdafx.h"
 #include <iostream>
 #include <winsock2.h>
