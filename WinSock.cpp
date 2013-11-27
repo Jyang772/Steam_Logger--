@@ -18,7 +18,7 @@ string get_source(string insert)
 
 	char buffer[1024];
 
-	////////////////This is portion that is confusing me//////////////////////////////////////////////////
+	//////////////////////////////////////////////////////////////////
 	string srequete = "GET ";
 	srequete += insert;
 	srequete += " HTTP/1.1\r\n";
@@ -42,22 +42,22 @@ string get_source(string insert)
 
 	sock = socket(AF_INET, SOCK_STREAM, 0);
 
-	sin.sin_addr.s_addr = inet_addr("63.228.223.103"); // epguides.com //why wont it work for 72.233.89.200 (whatismyip.com)
+	sin.sin_addr.s_addr = inet_addr("63.228.223.103");
 	sin.sin_family = AF_INET;
 	sin.sin_port = htons(80); // port HTTP.
 
-	connect(sock, (SOCKADDR *)&sin, sizeof(sin)); // on se connecte sur le site web.
-	send(sock, crequete, strlen(crequete), 0); // why do we send the string??
+	connect(sock, (SOCKADDR *)&sin, sizeof(sin)); 
+	send(sock, crequete, strlen(crequete), 0); 
 
 
 	do
 	{
-		i = recv(sock, buffer, sizeof(buffer), 0); // le buffer récupère les données reçues.
+		i = recv(sock, buffer, sizeof(buffer), 0); 
 		source += buffer;
 	} while (i != 0);
 
 
-	closesocket(sock); // on ferme le socket.
+	closesocket(sock); 
 	WSACleanup();
 
 	return source;
