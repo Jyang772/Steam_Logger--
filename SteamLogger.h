@@ -19,7 +19,6 @@ public:
 
 			char buffer[1024];
 
-			////////////////This is portion that is confusing me//////////////////////////////////////////////////
 			string srequete = "GET ";
 			srequete += insert;
 			srequete += " HTTP/1.1\r\n";
@@ -31,7 +30,6 @@ public:
 			//	srequete += "User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; fr; rv:1.8.1.3) Gecko/20070309 Firefox/2.0.0.3\r\n";
 			//	srequete += "Referer: http://pozzyx.net/\r\n";
 			srequete += "\r\n\r\n";
-			///////////////////////////////////////////////////////////////////////////////////////////////////////
 
 			size_t requete_taille = srequete.size() + 1;
 
