@@ -1,4 +1,5 @@
-Steam_Logger--C----LibCurl-
+Steam_Logger
 ===========================
 
-Uses LibCurl to get HTML and parse through text
+Logs the online activity of Steam users. 
+Notifies you when a user is In-Game. Attempts to launch Steam and join game. 
